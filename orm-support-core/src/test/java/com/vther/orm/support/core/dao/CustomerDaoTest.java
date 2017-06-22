@@ -16,6 +16,7 @@ import java.util.Date;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(classes = {SpringJpaEclipseLinkConfig.class})
+//@ContextConfiguration(locations = {"classpath:spring-context-jpa.xml"})
 @ContextConfiguration(locations = {"classpath:spring-context-hibernate.xml"})
 //@ActiveProfiles(OrmType.JPA_ECLIPSELINK)
 public class CustomerDaoTest {

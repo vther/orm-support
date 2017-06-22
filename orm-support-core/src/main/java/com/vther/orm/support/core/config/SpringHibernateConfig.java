@@ -1,5 +1,7 @@
 package com.vther.orm.support.core.config;
 
+import com.vther.orm.support.core.dao.impl.hibernate.HibernateCustomerDaoImpl;
+import com.vther.orm.support.core.utils.SpringContextUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,7 +12,7 @@ import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import javax.sql.DataSource;
 
 @Configuration
-@Import(com.vther.orm.support.core.dao.impl.hibernate.HibernateCustomerDaoImpl.class)
+@Import({HibernateCustomerDaoImpl.class, SpringContextUtil.class})
 //@ImportResource("classpath:spring-context-hibernate.xml")
 //@Profile(OrmType.HIBERNATE)
 //@PropertySource(value = {"classpath:orm.properties"})

@@ -12,6 +12,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter;
 import org.springframework.util.StringUtils;
 
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class SpringJpaEclipseLinkConfig {
     private DataSource dataSource;
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws SQLException {
+    public EntityManagerFactory entityManagerFactory() throws SQLException {
         final EclipseLinkJpaVendorAdapter vendorAdapter = new EclipseLinkJpaVendorAdapter();
         vendorAdapter.setGenerateDdl(true);
         vendorAdapter.setShowSql(true);
@@ -60,7 +61,11 @@ public class SpringJpaEclipseLinkConfig {
         factory.afterPropertiesSet();
         //factory.setPersistenceXmlLocation("classpath:META-INF/persistence.xml");
         //factory.setPersistenceUnitName("TEST_Persistence");
-        return factory;
+        return factory.getObject();
     }
 
+    //@Bean
+    //public CustomerDao customerDao() throws SQLException {
+    //    return new JPACustomerDaoImpl(entityManagerFactory().createEntityManager());
+    //}
 }
